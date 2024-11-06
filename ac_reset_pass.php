@@ -76,14 +76,14 @@ if (isset($_POST['reset'])) {
 							$sql = "DELETE FROM pwd_reset WHERE pwd_reset_email=?";
 							$stmt = mysqli_stmt_init($conn);
 							if (!mysqli_stmt_prepare($stmt, $sql)) {
-								header("location: login.html?error=sqlerror");
+								header("location: index.html?error=sqlerror");
 								exit();
 							}
 							else{
 								mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
 								mysqli_stmt_execute($stmt);
 
-								header("location: login.html?pwd=pwdUpd");
+								header("location: index.html?pwd=pwdUpd");
 							}
 						}
 					}

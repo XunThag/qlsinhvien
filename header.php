@@ -65,7 +65,7 @@
     		echo '<a href="logout.php">Đăng xuất</a>';
     	}
     	else{
-    		echo '<a href="login.html">Đăng nhập</a>';
+    		echo '<a href="index.html">Đăng nhập</a>';
     	}
     ?>
     <a href="javascript:void(0);" class="icon" onclick="navFunction()">

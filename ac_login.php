@@ -8,18 +8,18 @@ if (isset($_POST['login'])) {
 	$Userpass = $_POST['pwd']; 
 
 	if (empty($Usermail) || empty($Userpass) ) {
-		header("location: login.php?error=emptyfields");
+		header("location: index.html?error=emptyfields");
   		exit();
 	}
 	else if (!filter_var($Usermail,FILTER_VALIDATE_EMAIL)) {
-          header("location: login.php?error=invalidEmail");
+          header("location: index.html?error=invalidEmail");
           exit();
     }
 	else{
 		$sql = "SELECT * FROM admin WHERE admin_email=?";
 		$result = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($result, $sql)) {
-			header("location: login.php?error=sqlerror");
+			header("location: index.html?error=sqlerror");
   			exit();
 		}
 		else{
@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
 			if ($row = mysqli_fetch_assoc($resultl)) {
 				$pwdCheck = password_verify($Userpass, $row['admin_pwd']);
 				if ($pwdCheck == false) {
-					header("location: login.php?error=wrongpassword");
+					header("location: index.html?error=wrongpassword");
   					exit();
 				}
 				else if ($pwdCheck == true) {
@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
 				}
 			}
 			else{
-				header("location: login.php?error=nouser");
+				header("location: index.html?error=nouser");
   				exit();
 			}
 		}
@@ -51,7 +51,7 @@ mysqli_stmt_close($result);
 mysqli_close($conn);
 }
 else{
-  header("location: login.html");
+  header("location: index.html");
   exit();
 }
 ?>

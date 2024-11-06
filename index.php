@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['Admin-name'])) {
-  header("location: login.html");
+  header("location: index.html");
 }
 ?>
 <!DOCTYPE html>
